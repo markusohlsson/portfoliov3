@@ -43,11 +43,12 @@ onMounted(async () => {
 
 
 <style scoped>
+/* --- Base: Mobile first --- */
 .intro-container {
   position: fixed;
   inset: 0;
   background: #0d0d0d17;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px); /* slightly less on mobile */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,6 +56,8 @@ onMounted(async () => {
   overflow: hidden;
   transition: opacity 0.8s ease, backdrop-filter 0.8s ease;
   opacity: 1;
+  padding: 1rem;
+  text-align: center;
 }
 
 .intro-container.fadeOut {
@@ -63,10 +66,33 @@ onMounted(async () => {
 }
 
 h1.logo-full {
-  font-size: 10rem;
+  font-size: clamp(3rem, 12vw, 6rem); /* mobile-friendly scaling */
   font-weight: 700;
   color: var(--text-color);
   margin: 0;
-  white-space: nowrap;
+  white-space: normal; /* allow wrapping on small screens */
+  line-height: 1.1;
+}
+
+/* --- Larger screens --- */
+@media (min-width: 768px) {
+  .intro-container {
+    backdrop-filter: blur(8px); /* more blur on tablets/desktops */
+  }
+
+  h1.logo-full {
+    font-size: clamp(5rem, 10vw, 10rem); /* desktop look */
+    white-space: nowrap; /* keep single line */
+  }
+}
+
+@media (min-width: 1100px) {
+  .intro-container {
+    backdrop-filter: blur(10px);
+  }
+
+  h1.logo-full {
+    font-size: 10rem;
+  }
 }
 </style>

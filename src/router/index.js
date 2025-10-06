@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import AboutSection from '../components/AboutSection.vue';
 import Resume from '../components/Resume.vue';
 import ProjectSection from '../components/ProjectSection.vue';
@@ -14,6 +14,7 @@ const routes = [
   { path: '/awards', component: Awards },
   { path: '/contact', component: Contact },
 ];
+
 
 const router = createRouter({
   history: createWebHashHistory(),
