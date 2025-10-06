@@ -16,7 +16,8 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
+  //history: createWebHistory(), Temporarily switched to hash history for ghpages
   routes,
 });
 
