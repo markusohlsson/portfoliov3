@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  height: 100vh;
+  width:100vw;
+}
+
+::selection {
+  color: var(--text-color); /* text color when highlighted */
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);       /* the blur behind the element */
+  -webkit-backdrop-filter: blur(15px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border highlight */
+}
+
+:root {
+  --text-color: #212529;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace !important;
+  background: linear-gradient(
+  -45deg,
+  #ff7e5f 0%,    /* warm red */
+  #feb47b 25%,   /* orange */
+  #ffecd2 50%,   /* pale yellow */
+  #fcb69f 75%,   /* light coral */
+  #ff7e5f 100%   /* warm red again */
+  );
+  background-size: 100% 500%;
+  background-attachment: fixed; /* optional for smooth scrolling */
+  background-position: 0% 0%; /* start at top */
+  transition: background-position 0.8s ease; /* smooth shift */
+  color: var(--text-color);
+}
+
+
+.stroke-text {
+    color: var(--text-color);
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1.4px;
+    -webkit-text-stroke-color: var(--text-color);
+}
+
+.section {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);       /* the blur behind the element */
+  -webkit-backdrop-filter: blur(15px); /* Safari support */
+  padding: 3em;
+}
+
+.title-heading {
+    position: relative;
+    font-size:0.9rem;
+    font-weight: 500;
+    text-transform:uppercase;
+    letter-spacing: 0.5px;
+}
+.title-heading::before {
+    content: '// ';
+}
+.title-heading::after{
+    content: attr(data-backdrop-text);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0.15;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    line-height: 0.9;
+    color: black;;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+@media (max-width: 1100px) {
+  html {
+  scroll-padding-top: 60px;
+  }
+  body {
+    background-size: 100% 600%;
+  }
+    .title-heading::after{
+        font-size: 1.75rem;
+    }
+}
+@media (min-width: 1921px) {
+  .title-heading {
+      font-size: 1.1rem;
+  }
+    .title-heading::after{
+        font-size: 3.5rem;
+    }
+}
