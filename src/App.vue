@@ -9,13 +9,13 @@ import ProjectSection from './components/ProjectSection.vue';
 import Awards from './components/Awards.vue';
 import Contact from './components/Contact.vue';
 import IntroLanding from './components/IntroLanding.vue';
-const showIntro = ref(true)
+
+const showIntro = ref(true);
 const router = useRouter();
 const route = useRoute();
 
 function handleIntroFinished() {
-  showIntro.value = false
-  // Any additional logic can go here (like analytics, preload, etc.)
+  showIntro.value = false;
 }
 
 const sections = ['about', 'resume', 'portfolio', 'awards', 'contact'];
@@ -27,14 +27,16 @@ function getIndex(section) {
   return sections.indexOf(section);
 }
 
-// Desktop scroll
+// --- Desktop: handle wheel snap scrolling ---
 function handleWheel(event) {
   if (window.innerWidth <= 768) return;
 
+  // Exit detail view if open
   if (route.path.startsWith('/portfolio/') && route.params.id) {
-    router.push('/portfolio')
-    return
+    router.push('/portfolio');
+    return;
   }
+
   const currentIndex = getIndex(currentSection.value);
   if (event.deltaY > 0 && currentIndex < sections.length - 1) {
     const next = sections[currentIndex + 1];
@@ -49,8 +51,10 @@ function handleWheel(event) {
   }
 }
 
-// Watch URL changes
+// --- Watch for URL changes (Desktop only) ---
 watch(route, (newRoute) => {
+  if (window.innerWidth <= 768) return; // ❗ mobile ignores this entirely
+
   if (newRoute.path === "/") {
     currentSection.value = null;
     return;
@@ -59,69 +63,32 @@ watch(route, (newRoute) => {
   const newSection = newRoute.path.split('/')[1];
   const newIndex = getIndex(newSection);
 
-  // background effect
-const index = getIndex(newSection);  // 0,1,2,3,4
-const sectionCount = sections.length;
-const percentage = (index / (sectionCount - 1)) * 100; // 0%, 25%, 50%, 75%, 100%
-document.body.style.backgroundPosition = `0% ${percentage}%`;
+  // Background gradient scroll effect
+  const sectionCount = sections.length;
+  const percentage = (newIndex / (sectionCount - 1)) * 100;
+  document.body.style.backgroundPosition = `0% ${percentage}%`;
 
-  if (window.innerWidth > 768) {
-    if (newIndex !== containerOffset.value) {
-      containerOffset.value = newIndex;
-      currentSection.value = newSection;
-    }
+  if (newIndex !== containerOffset.value) {
+    containerOffset.value = newIndex;
+    currentSection.value = newSection;
   }
 });
 
-let observer = null;
-let scrollListener = null;
-
 onMounted(() => {
-  window.addEventListener('wheel', handleWheel, { passive: true });
+  // Desktop snap scroll only
+  if (window.innerWidth > 768) {
+    window.addEventListener('wheel', handleWheel, { passive: true });
 
-  if (window.innerWidth > 768 && currentSection.value) {
-    containerOffset.value = getIndex(currentSection.value);
+    if (currentSection.value) {
+      containerOffset.value = getIndex(currentSection.value);
+    }
   }
 
-  if (window.innerWidth <= 768) {
-    // IntersectionObserver
-    observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            if (id && sections.includes(id)) {
-              currentSection.value = id;
-              if (route.path !== `/${id}`) {
-                router.replace(`/${id}`);
-              }
-            }
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    // Clear URL at very top
-    scrollListener = () => {
-      if (window.scrollY <= 50) {
-        currentSection.value = null;
-        if (route.path !== '/') router.replace('/');
-      }
-    };
-    window.addEventListener('scroll', scrollListener, { passive: true });
-  }
+  // ❌ Mobile: no observer, no scroll listener, no auto scroll
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener('wheel', handleWheel);
-  if (observer) observer.disconnect();
-  if (scrollListener) window.removeEventListener('scroll', scrollListener);
 });
 </script>
 

@@ -29,24 +29,24 @@
 </template>
 
 <script setup>
-import { ref, nextTick, onMounted, watch } from 'vue';
+import { ref, nextTick, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import ProjectCard from './ProjectCard.vue';
 import { projects } from '../data/projects.js';
-
 import SelectedProject from './SelectedProject.vue';
+
 const props = defineProps({
   id: String
 });
 
-
 const router = useRouter();
 const route = useRoute();
 
-
 const scrollContainer = ref(null);
 const selectedProject = ref(null);
+let sectionObserver = null;
 
+// --- Select and back handlers ---
 function selectProject(project) {
   selectedProject.value = project;
   router.push(`/portfolio/${project.id}`);
@@ -66,14 +66,12 @@ function backToGrid() {
     scrollContainer.value.scrollTo({ left: 0, behavior: 'smooth' });
     setTimeout(() => {
       selectedProject.value = null;
-      router.push('/portfolio'); // go back to base projects route
+      router.push('/portfolio');
     }, 500);
   }
 }
 
-/* -------------------------
-   Auto-select project if URL has ID
---------------------------*/
+// --- Auto-select project if URL already has ID ---
 onMounted(() => {
   const projectId = route.params.id;
   if (projectId) {
@@ -90,11 +88,34 @@ onMounted(() => {
       });
     }
   }
+
+  // 🔍 Observe when section leaves viewport
+  const sectionEl = document.getElementById(props.id);
+  if (sectionEl) {
+    sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // If completely invisible (intersection ratio = 0)
+          if (entry.intersectionRatio === 0 && selectedProject.value) {
+            selectedProject.value = null;
+            if (route.path !== '/portfolio') {
+              router.replace('/portfolio');
+            }
+          }
+        });
+      },
+      { threshold: [0] } // fire at 0% visibility
+    );
+
+    sectionObserver.observe(sectionEl);
+  }
 });
 
-/* -------------------------
-   Watch route changes (optional: handle back button)
---------------------------*/
+onBeforeUnmount(() => {
+  if (sectionObserver) sectionObserver.disconnect();
+});
+
+// --- Handle route changes (back button etc.) ---
 watch(
   () => route.params.id,
   (newId) => {

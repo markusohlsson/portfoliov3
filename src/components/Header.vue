@@ -89,4 +89,9 @@
     height: auto;
   }
 }
+@media (min-width: 1600px) {
+  .row {
+    max-width: 70vw;
+  }
+}
 </style>
