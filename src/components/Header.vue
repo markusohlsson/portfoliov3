@@ -4,9 +4,9 @@
             <h1><span class="stroke-text">Ohlsson</span>.dev</h1>
         </div>
         <div class="right">
-            <a  class="icon-wrapper" href="https://github.com/markusohlsson" target="_blank" rel="noopener noreferrer"><Github class="icon"/></a>
-            <a  class="icon-wrapper" href="https://www.linkedin.com/in/markusohlsson/" target="_blank" rel="noopener noreferrer"><Linkedin class="icon"/></a>
-            <a  class="icon-wrapper" href="mailto:hello@ohlsson.dev"><Mail class="icon"/></a>
+            <a  class="icon-wrapper" href="https://github.com/markusohlsson" target="_blank" rel="noopener noreferrer" aria-label="Visit my Github Profile"><Github class="icon"/></a>
+            <a  class="icon-wrapper" href="https://www.linkedin.com/in/markusohlsson/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn"><Linkedin class="icon"/></a>
+            <a  class="icon-wrapper" href="mailto:hello@ohlsson.dev" aria-label="Send me an Email"><Mail class="icon"/></a>
         </div>
     </div>
 </template>
