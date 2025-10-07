@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  base: '/portfoliov3/',
+  // base: '/portfoliov3/',
   server: {
     historyApiFallback: true
   }
