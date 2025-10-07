@@ -17,22 +17,24 @@ const isMobile = window.matchMedia('(max-width: 768px)').matches
 function handleClick(event) {
   if (isMobile) {
     if (!isActive.value) {
-      // first tap → activate hover state
       isActive.value = true
-      // prevent triggering parent navigation
       event.stopPropagation()
-
-      // optional: reset if no second click within X seconds
       setTimeout(() => (isActive.value = false), 3000)
       return
     }
-    // second tap → let click bubble to parent
     isActive.value = false
   }
 
-  // for desktop, just emit normally
   emit('click', props.project)
 }
+
+// --- Compute srcset string dynamically ---
+const srcset = `
+  ${props.project.images.xs} 480w,
+  ${props.project.images.s} 768w,
+  ${props.project.images.m} 1024w,
+  ${props.project.images.l} 1920w
+`
 </script>
 
 <template>
@@ -41,7 +43,19 @@ function handleClick(event) {
     :class="{ active: isActive }"
     @click="handleClick"
   >
-    <img class="project-image" :src="project.image" :alt="project.title" loading="lazy" />
+  <div class="project-image-wrapper">
+    <img
+      class="project-image"
+      :src="props.project.images.m"
+      :alt="props.project.title"
+      loading="lazy"
+      :srcset="srcset"
+      sizes="(max-width: 480px) 100vw,
+            (max-width: 768px) 75vw,
+            (max-width: 1024px) 50vw,
+            33vw"
+    />
+  </div>
     <span class="project-tech">{{ project.tech.join(', ') }}</span>
     <div class="project-caption">
       <h3>{{ project.title }}</h3>
@@ -52,21 +66,28 @@ function handleClick(event) {
     </div>
   </div>
 </template>
+
 <style scoped>
-/* --- Base: Mobile first --- */
+/* --- Your existing styling remains exactly the same --- */
 .project-card {
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
-  min-height: auto; /* mobile default: auto */
+  min-height: auto;
   border-radius: 0.5em;
 }
 
-.project-image {
-  max-width: 100%;
-  object-fit: contain;
-  height: auto;
+.project-image-wrapper {
+  width: 100%;
   aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fill the wrapper exactly */
+  display: block;
   transition: filter 0.3s ease, scale 0.3s ease;
 }
 
@@ -189,7 +210,6 @@ function handleClick(event) {
   color: #ffffff5d;
 }
 
-/* --- Larger screens --- */
 @media (min-width: 1100px) {
   .project-card {
     max-height: 275px;
@@ -201,6 +221,5 @@ function handleClick(event) {
     top: 16px;
     right: 16px;
   }
-
 }
 </style>

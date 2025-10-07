@@ -8,6 +8,7 @@
         <h2>{{ selectedProject ? selectedProject.title : 'My Recent Projects' }}</h2>
       </transition>
     </div>
+
     <div class="projects-scroll-container" ref="scrollContainer">
       <!-- Grid section -->
       <div class="projects-grid-section">
@@ -23,7 +24,11 @@
         </div>
       </div>
 
-       <SelectedProject v-if="selectedProject" :project="selectedProject" @back="backToGrid" />
+      <SelectedProject 
+        v-if="selectedProject" 
+        :project="selectedProject" 
+        @back="backToGrid" 
+      />
     </div>
   </div>
 </template>
@@ -35,9 +40,7 @@ import ProjectCard from './ProjectCard.vue';
 import { projects } from '../data/projects.js';
 import SelectedProject from './SelectedProject.vue';
 
-const props = defineProps({
-  id: String
-});
+const props = defineProps({ id: String });
 
 const router = useRouter();
 const route = useRoute();
@@ -46,7 +49,6 @@ const scrollContainer = ref(null);
 const selectedProject = ref(null);
 let sectionObserver = null;
 
-// --- Select and back handlers ---
 function selectProject(project) {
   selectedProject.value = project;
   router.push(`/portfolio/${project.id}`);
@@ -71,7 +73,6 @@ function backToGrid() {
   }
 }
 
-// --- Auto-select project if URL already has ID ---
 onMounted(() => {
   const projectId = route.params.id;
   if (projectId) {
@@ -89,24 +90,19 @@ onMounted(() => {
     }
   }
 
-  // 🔍 Observe when section leaves viewport
   const sectionEl = document.getElementById(props.id);
   if (sectionEl) {
     sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // If completely invisible (intersection ratio = 0)
           if (entry.intersectionRatio === 0 && selectedProject.value) {
             selectedProject.value = null;
-            if (route.path !== '/portfolio') {
-              router.replace('/portfolio');
-            }
+            if (route.path !== '/portfolio') router.replace('/portfolio');
           }
         });
       },
-      { threshold: [0] } // fire at 0% visibility
+      { threshold: [0] }
     );
-
     sectionObserver.observe(sectionEl);
   }
 });
@@ -115,49 +111,40 @@ onBeforeUnmount(() => {
   if (sectionObserver) sectionObserver.disconnect();
 });
 
-// --- Handle route changes (back button etc.) ---
-watch(
-  () => route.params.id,
-  (newId) => {
-    if (newId) {
-      const project = projects.find(p => p.id === newId);
-      if (project) {
-        selectedProject.value = project;
-        nextTick(() => {
-          if (scrollContainer.value) {
-            const detailSection = scrollContainer.value.children[1];
-            if (detailSection) {
-              scrollContainer.value.scrollTo({
-                left: detailSection.offsetLeft,
-                behavior: 'auto'
-              });
-            }
+watch(() => route.params.id, (newId) => {
+  if (newId) {
+    const project = projects.find(p => p.id === newId);
+    if (project) {
+      selectedProject.value = project;
+      nextTick(() => {
+        if (scrollContainer.value) {
+          const detailSection = scrollContainer.value.children[1];
+          if (detailSection) {
+            scrollContainer.value.scrollTo({ left: detailSection.offsetLeft, behavior: 'auto' });
           }
-        });
-      }
-    } else {
-      backToGrid();
+        }
+      });
     }
+  } else {
+    backToGrid();
   }
-);
+});
 </script>
 
 <style scoped>
 /* --- Base: Mobile first --- */
 h2 {
-  font-size: 1.7rem; /* mobile default */
+  font-size: 1.7rem;
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-weight: 500;
   line-height: 1.2;
   text-align: center;
 }
 
 .title-wrapper {
-  min-height: 3rem; /* adjust to your h1 height */
+  min-height: 3rem;
 }
 
-/* Fade transitions */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -167,7 +154,6 @@ h2 {
   opacity: 0;
 }
 
-/* Projects horizontal scroll container */
 .projects-scroll-container {
   display: flex;
   flex-direction: row;
@@ -175,23 +161,32 @@ h2 {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   width: 100%;
+  height: 100%;
   scrollbar-width: none;
 }
 .projects-scroll-container::-webkit-scrollbar {
   display: none;
 }
 
-/* Grid section */
 .projects-grid-section {
   flex: 0 0 100%;
   scroll-snap-align: start;
-  display: block; /* mobile default: block */
+  width: 100%;
+  display: block;
+  height: 100%;
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: 1fr; /* mobile default: single column */
-  gap: 0.2rem;
+  grid-template-columns: 1fr; /* mobile: 1 column */
+  gap: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.project-wrapper {
+  width: 100%;
+  height: 100%;
 }
 
 .title-heading::before {
@@ -212,7 +207,9 @@ h2 {
   }
 
   .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* desktop: 2 columns */
+    grid-auto-rows:min-content;
+    gap: 1rem;
   }
 }
 </style>

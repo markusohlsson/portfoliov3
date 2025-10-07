@@ -9,7 +9,22 @@
           <a class="link" :href="project.repo" target="_blank" rel="noopener noreferrer"><Github/></a>
         </div>
     </div>
-    <img class="detail-image" :src="project.image" :alt="project.title + ' Screenshot'" loading="lazy">
+    <img 
+      class="detail-image"
+      :src="project.images.m"
+      :alt="project.title + ' Screenshot'"
+      loading="lazy"
+      :srcset="`
+        ${project.images.xs} 480w,
+        ${project.images.s} 768w,
+        ${project.images.m} 1024w,
+        ${project.images.l} 1920w
+      `"
+      sizes="(max-width: 480px) 90vw,
+            (max-width: 768px) 80vw,
+            (max-width: 1024px) 60vw,
+            50vw"
+    />
     <p>{{ project.description }}</p>
     <div class="tech-container">
         <h3>Built with:</h3>
@@ -108,7 +123,6 @@ li {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 

@@ -105,7 +105,6 @@ h2 {
   font-size: clamp(1rem, 1rem + 1vw, 2.2rem);
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-weight: 500;
   line-height: 1.2;
 }
 
@@ -113,7 +112,6 @@ h3 {
   font-size: clamp(1.2rem, 1rem + 0.6vw, 1.5rem);
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  font-weight: 500;
   line-height: 1.2;
 }
 

@@ -35,7 +35,6 @@ h2 {
   font-size: 1.4rem; /* mobile default */
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-weight: 500;
   line-height: 1.2;
 }
 
