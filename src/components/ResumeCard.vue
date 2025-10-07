@@ -6,7 +6,8 @@
         <div class="resume-section">
             <span class="resume-date">{{ details.date }}</span>
             <h3 class="resume-level">{{ details.title }}</h3>
-            <span>@ {{ details.workplace }}, {{ details.location }}</span>
+            <span class="resume-location">@ {{ details.workplace }}, {{ details.location }}</span>
+            <p class="resume-description">{{ details.description }}</p>
         </div>
     </div>
 </template>
@@ -14,11 +15,19 @@
 /* --- Base: Mobile first --- */
 .resume-card {
   position: relative;
-  padding-left: 20px;
-  padding-bottom: 30px;
+  padding-left: clamp(12px, 1.5vw, 18px);
+  padding-bottom: clamp(18px, 2.5vh, 28px);
   box-sizing: border-box;
 }
-
+.resume-description {
+    font-size: clamp(0.80rem, 0.7rem + 0.3vw, 0.9rem);
+    margin: 0;
+    margin-top: 0.5rem;
+    line-height: 1.25;
+}
+.resume-location {
+  font-style: italic;
+}
 .resume-card::before {
   content: '';
   position: absolute;

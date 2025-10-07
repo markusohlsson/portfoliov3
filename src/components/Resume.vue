@@ -64,7 +64,8 @@ const education = [
         date: '2022 - 2024',
         school: 'Medieinstitutet',
         location: 'Stockholm',
-        level: 'Frontend Developer Focus E-Commerce', 
+        level: 'Frontend Developer Focus E-Commerce',
+        description: 'A two-year vocational education with a focus on frontend development, e-commerce, and web design. Gained practical skills in HTML, CSS, JavaScript, and popular frameworks like React and Vue.js. Completed several projects including building responsive websites and e-commerce platforms.', 
     }
 ]
 const experiences = [
@@ -74,18 +75,21 @@ const experiences = [
         location: 'Stockholm',
         title: 'Fullstack Developer Consultant',
         icon: BriefcaseBusiness,
+        description: 'Contributed to enhancing the company’s webshop as part of an agile team, collaborating closely with UX designers and stakeholders to deliver user-focused, business-driven solutions. Developed and maintained core features using Laravel, Vue.js, MySQL, and SCSS, while leveraging Git for version control and JIRA for agile task management.'
     },
     {
         date: 'Oct 2023 - May 2024',
         workplace: 'Webhallen Sverige AB',
         location: 'Stockholm',
         title: 'Fullstack Developer Intern',
+        description: 'Gained full-stack experience in an agile team, contributing to webshop development with Laravel, Vue.js, PHP, JavaScript, and MySQL. Managed version control using Git and later transitioned into a consultant role.'
     },
     {
         date: 'Sep 2020 - Sep 2022',
         workplace: 'Webhallen Sverige AB',
         location: 'Stockholm',
-        title: 'Customer Service Agent'
+        title: 'Customer Service Agent',
+        description: 'Provided support via chat, email, phone, and forums, troubleshooting and resolving order and delivery issues while ensuring a positive customer experience through effective communication and customer-focused problem-solving.',
     }
 ]
 const isMobile = ref(false);
