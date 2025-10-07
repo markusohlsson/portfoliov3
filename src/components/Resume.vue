@@ -1,14 +1,14 @@
 <template>
     <div class="section" :id="id">
-    <h5 class="title-heading" data-backdrop-text="Resume">Resume</h5>
-    <h1 v-if="!isMobile">Education & Experience</h1>
-    <h1 v-else>Education</h1>
+    <h1 class="title-heading" data-backdrop-text="Resume">Resume</h1 >
+    <h2 v-if="!isMobile">Education & Experience</h2>
+    <h2 v-else>Education</h2>
     <div class="resume-grid">
         <div class="resume-col">
             <EducationCard :details="education[0]" />
         </div>
         <div class="resume-col">
-            <h1 v-if="isMobile">Experience</h1>
+            <h2 v-if="isMobile">Experience</h2>
             <template v-for="experience in experiences">
                 <ResumeCard :details="experience" />    
             </template>
@@ -31,7 +31,7 @@
   flex-direction: column;
 }
 
-h1 {
+h2 {
   font-size: 1.4rem; /* mobile default */
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -41,7 +41,7 @@ h1 {
 
 /* --- Larger screens --- */
 @media (min-width: 1100px) {
-  h1 {
+  h2 {
     font-size: 2.2rem;
   }
 

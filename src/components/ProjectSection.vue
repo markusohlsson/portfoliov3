@@ -1,11 +1,11 @@
 <template>
   <div class="section" :id="id">
-    <h5 class="title-heading" :data-backdrop-text="'Portfolio'">  <span class="heading-text">
+    <h1 class="title-heading" :data-backdrop-text="'Portfolio'"> 
       Portfolio
-  </span></h5>
+    </h1>
     <div class="title-wrapper">
       <transition name="fade">
-        <h1>{{ selectedProject ? selectedProject.title : 'My Recent Projects' }}</h1>
+        <h2>{{ selectedProject ? selectedProject.title : 'My Recent Projects' }}</h2>
       </transition>
     </div>
     <div class="projects-scroll-container" ref="scrollContainer">
@@ -144,7 +144,7 @@ watch(
 
 <style scoped>
 /* --- Base: Mobile first --- */
-h1 {
+h2 {
   font-size: 1.7rem; /* mobile default */
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -165,23 +165,6 @@ h1 {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-}
-
-/* Heading text animations */
-.heading-text {
-  display: inline-block;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.heading-text-enter-active,
-.heading-text-leave-active {
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.heading-text-enter-from,
-.heading-text-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
 }
 
 /* Projects horizontal scroll container */
@@ -217,7 +200,7 @@ h1 {
 
 /* --- Larger screens --- */
 @media (min-width: 1100px) {
-  h1 {
+  h2 {
     font-size: 2.2rem;
     text-align: left;
   }

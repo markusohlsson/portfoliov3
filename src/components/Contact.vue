@@ -1,6 +1,6 @@
 <template>
   <div class="section" :id="id">
-    <h5 class="title-heading" data-backdrop-text="Contact">Get in Touch</h5>
+    <h1 class="title-heading" data-backdrop-text="Contact">Get in Touch</h1>
     <p>I’m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
     <p>
       Let’s connect — use the form below or reach me on

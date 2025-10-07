@@ -5,7 +5,7 @@
         </div>
         <div class="resume-section">
             <span class="resume-date">{{ details.date }}</span>
-            <h5 class="resume-level">{{ details.title }}</h5>
+            <h3 class="resume-level">{{ details.title }}</h3>
             <span>@ {{ details.workplace }}, {{ details.location }}</span>
         </div>
     </div>

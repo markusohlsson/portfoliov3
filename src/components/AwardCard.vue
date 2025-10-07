@@ -5,7 +5,7 @@
         </div>
         <div class="award-section">
             <span class="award-date">{{ award.year }}</span>
-            <h5 class="award-title">{{ award.title }} @ {{ award.issuedBy }}</h5>
+            <h2 class="award-title">{{ award.title }} @ {{ award.issuedBy }}</h2>
             <p class="award-description">”{{ award.description }}”</p> 
         </div>
     </div>

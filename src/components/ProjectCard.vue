@@ -44,7 +44,7 @@ function handleClick(event) {
     <img class="project-image" :src="project.image" :alt="project.title" loading="lazy" />
     <span class="project-tech">{{ project.tech.join(', ') }}</span>
     <div class="project-caption">
-      <h2>{{ project.title }}</h2>
+      <h3>{{ project.title }}</h3>
       <div class="project-links">
         <a :href="project.demo" target="_blank" rel="noopener noreferrer"><SquareArrowOutUpRight /></a>
         <a :href="project.repo" target="_blank" rel="noopener noreferrer"><Github /></a>
@@ -118,7 +118,7 @@ function handleClick(event) {
   transition: opacity 0.3s ease;
 }
 
-.project-caption h2 {
+.project-caption h3 {
   margin: 0;
   color: white;
   font-weight: 600;
@@ -126,11 +126,11 @@ function handleClick(event) {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
   transition: color 0.5s ease;
 }
 
-.project-caption h2:hover {
+.project-caption h3:hover {
   -webkit-text-fill-color: white;
   -webkit-text-stroke-width: 0px;
   cursor: pointer;
@@ -191,7 +191,6 @@ function handleClick(event) {
 /* --- Larger screens --- */
 @media (min-width: 1100px) {
   .project-card {
-    min-height: 255px;
     max-height: 275px;
   }
 
@@ -202,8 +201,5 @@ function handleClick(event) {
     right: 16px;
   }
 
-  .project-caption h2 {
-    font-size: 2.5rem;
-  }
 }
 </style>

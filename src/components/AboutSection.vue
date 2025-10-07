@@ -70,8 +70,8 @@ const tools = [
         </div>
         </div>
         <div>
-            <h5 class="title-heading" data-backdrop-text="About Me">About Me</h5>
-            <h1>Junior Fullstack Developer</h1> 
+            <h1 class="title-heading" data-backdrop-text="About Me">About Me</h1>
+            <h2>Junior Fullstack Developer</h2> 
             <p>I’m a junior web developer with experience in PHP, Laravel, MySQL, Vue, and JavaScript. I’m passionate about building efficient and user-friendly web solutions, always striving for high quality—both in independent projects and team collaborations. I enjoy building practical solutions, solving problems, and staying curious. Off-screen, I play golf, follow football, and explore new tech.</p>
             <ul>
                 <li><a href="https://www.linkedin.com/in/markusohlsson/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
@@ -80,19 +80,19 @@ const tools = [
             </ul>
         </div>
         <div>
-            <h2>Core Tech Stack</h2>
+            <h3>Core Tech Stack</h3>
             <ul>
                 <li v-for="tech in workTech"> {{ tech }}</li>
             </ul>
         </div>
           <div>
-          <h2>Tools</h2>
+          <h3>Tools</h3>
           <ul>
             <li v-for="tool in tools">{{ tool }}</li>
           </ul>
         </div>
         <div>
-            <h2>Explored / Learning</h2>
+            <h3>Explored / Learning</h3>
             <ul>
                 <li v-for="tech in famTech"> {{ tech }}</li>
             </ul>
@@ -101,7 +101,7 @@ const tools = [
 </template>
 <style scoped>
 /* --- Base: Mobile first --- */
-h1 {
+h2 {
   font-size: clamp(1rem, 1rem + 1vw, 2.2rem);
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -109,7 +109,7 @@ h1 {
   line-height: 1.2;
 }
 
-h2 {
+h3 {
   font-size: clamp(1.2rem, 1rem + 0.6vw, 1.5rem);
   margin-top: 1rem;
   margin-bottom: 0.5rem;

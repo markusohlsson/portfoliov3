@@ -46,14 +46,14 @@ function goToSection(path, id) {
   <nav>
     <ul>
       <li v-for="link in links" :key="link.path">
-        <a
-          href="javascript:void(0)"
+        <router-link
+          :to="link.path"
           :class="{ active: currentPath === link.path }"
-          @click="goToSection(link.path, link.path.slice(1))"
+          @click.native.prevent="goToSection(link.path, link.path.slice(1))"
         >
           <span>{{ link.text }}</span>
           <span class="nav-dot"></span>
-        </a>
+        </router-link>
       </li>
     </ul>
   </nav>

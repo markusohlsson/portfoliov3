@@ -132,6 +132,7 @@ li {
   cursor: pointer;
   z-index: 10;
   transition: transform 0.3s ease;
+  color: var(--text-color);
 }
 .back-btn svg {
   height: 40px;

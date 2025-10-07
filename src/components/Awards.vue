@@ -1,6 +1,6 @@
 <template>
     <div class="section" :id="id">
-        <h5 class="title-heading" data-backdrop-text="Awards">Awards & Honors</h5>
+        <h1 class="title-heading" data-backdrop-text="Awards">Awards & Honors</h1>
         <div>
             <template v-for="award in awards">
                 <AwardCard :award="award" />
