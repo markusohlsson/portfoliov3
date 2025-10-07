@@ -31,7 +31,9 @@ router.beforeEach((to, from, next) => {
 
 // Update <title> and <meta name="description"> dynamically
 router.afterEach((to) => {
-  if (to.meta.title) document.title = to.meta.title;
+  if (to.meta.title) {
+    document.title = `${to.meta.title} | Ohlsson.dev`;
+  }
 
   let meta = document.querySelector('meta[name="description"]');
   if (!meta) {
@@ -39,7 +41,6 @@ router.afterEach((to) => {
     meta.setAttribute('name', 'description');
     document.head.appendChild(meta);
   }
-  meta.setAttribute('content', to.meta.description || '');
+  meta.setAttribute('content', `${to.meta.description || ''} | Ohlsson.dev`);
 });
-
 export default router;
