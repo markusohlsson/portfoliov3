@@ -4,6 +4,7 @@ import Resume from '../components/Resume.vue';
 import ProjectSection from '../components/ProjectSection.vue';
 import Awards from '../components/Awards.vue';
 import Contact from '../components/Contact.vue';
+import Privacy from '../components/Privacy.vue';
 
 const routes = [
   { path: '/', component: AboutSection, meta: { title: 'About Me', description: 'Welcome to my developer portfolio.' } },
@@ -13,6 +14,7 @@ const routes = [
   { path: '/portfolio/:id', component: ProjectSection, meta: { title: 'Project Details', description: 'Detailed view of a specific project.' } },
   { path: '/awards', component: Awards, meta: { title: 'Awards', description: 'See the awards and recognition I’ve received.' } },
   { path: '/contact', component: Contact, meta: { title: 'Contact', description: 'Get in touch with me.' } },
+  { path: '/privacy-policy', component: Privacy, meta: { title: 'Privacy Policy', description: 'Read my privacy policy.' } },
 ];
 
 const router = createRouter({

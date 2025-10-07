@@ -9,6 +9,7 @@ import ProjectSection from './components/ProjectSection.vue';
 import Awards from './components/Awards.vue';
 import Contact from './components/Contact.vue';
 import IntroLanding from './components/IntroLanding.vue';
+import Privacy from './components/Privacy.vue';
 
 const showIntro = ref(true);
 const router = useRouter();
@@ -95,6 +96,7 @@ onBeforeUnmount(() => {
 <template>
   <IntroLanding v-if="showIntro" @finished="handleIntroFinished" />
   <Header />
+  <Privacy />
   <div class="main-container">
     <div class="main-left">
       <Navigation :current-section="currentSection" />

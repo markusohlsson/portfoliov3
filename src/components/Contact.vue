@@ -15,6 +15,9 @@
       <input v-model="form.subject" type="text" placeholder="Subject" required name="subject" />
       <textarea v-model="form.message" placeholder="Message" required name="message"></textarea>
 
+      <p class="privacy">By sending this message, you agree to my
+      <RouterLink to="/privacy-policy">Privacy Policy</RouterLink>.
+      I only use your information to reply to your inquiry.</p>
       <button type="submit" :disabled="loading">
         {{ loading ? 'Sending...' : 'Send Message' }}
       </button>
@@ -108,6 +111,12 @@ input:focus, textarea:focus {
 
 textarea {
   height: 250px;
+}
+.privacy {
+  font-size: 0.75rem;
+  margin-top: -1.5rem;
+  margin-bottom: 1.5rem;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .form-row {
