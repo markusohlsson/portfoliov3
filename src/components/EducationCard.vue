@@ -34,7 +34,7 @@
   border-radius: 2em;
   margin-bottom: 1em;
   padding: 0.4em 0.8em;
-  font-family: "Roboto Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;

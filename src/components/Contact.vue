@@ -91,7 +91,7 @@ textarea {
   box-shadow: none;
   font-weight: 600;
   font-size: 0.9rem;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Poppins", sans-serif;
 }
 input:focus, textarea:focus {
   outline: none;
@@ -103,7 +103,7 @@ input:focus, textarea:focus {
   font-weight: 400;
   font-size: 0.9rem;
   vertical-align: middle;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Poppins", sans-serif;
 }
 
 textarea {
@@ -139,7 +139,7 @@ button {
   border: 0;
   cursor: pointer;
   transition: background 0.3s ease;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Poppins", sans-serif;
   width: 100%; /* Mobile default: full width */
 }
 

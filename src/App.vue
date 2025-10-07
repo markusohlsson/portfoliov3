@@ -171,6 +171,9 @@ onBeforeUnmount(() => {
     gap: 2%;
     height: auto;
   }
+  .row {
+    max-width: 80vw;
+  }
 
   .main-left {
     flex: 0 0 20%;
@@ -203,6 +206,9 @@ onBeforeUnmount(() => {
 }
 @media (min-width: 1921px) {
   .main-container {
+    max-width: 70vw;
+  }
+  .row {
     max-width: 70vw;
   }
 }

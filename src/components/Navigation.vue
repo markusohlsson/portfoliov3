@@ -77,6 +77,7 @@ nav {
   overflow: hidden;
   position: sticky;
   top: 24px;
+  font-family: 'Roboto Mono', monospace !important;
 }
 
 ul {
