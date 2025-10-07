@@ -66,6 +66,7 @@ function handleClick(event) {
   max-width: 100%;
   object-fit: contain;
   height: auto;
+  aspect-ratio: 16 / 9;
   transition: filter 0.3s ease, scale 0.3s ease;
 }
 
