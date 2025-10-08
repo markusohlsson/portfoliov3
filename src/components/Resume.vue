@@ -75,7 +75,7 @@ const experiences = [
         location: 'Stockholm',
         title: 'Fullstack Developer Consultant',
         icon: BriefcaseBusiness,
-        description: 'Contributed to enhancing the company’s webshop as part of an agile team, collaborating closely with UX designers and stakeholders to deliver user-focused, business-driven solutions. Developed and maintained core features using Laravel, Vue.js, MySQL, and SCSS, while leveraging Git for version control and JIRA for agile task management.'
+        description: 'Contributed to enhancing the company’s webshop as part of an agile team, collaborating with developers, UX designers, and other internal teams to deliver user-focused, business-aligned solutions. Developed and maintained core features using Laravel, Vue.js, MySQL, and SCSS, while leveraging Git for version control and JIRA for agile task management.'
     },
     {
         date: 'Oct 2023 - May 2024',
