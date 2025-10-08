@@ -80,19 +80,27 @@ const tools = [
             </ul>
         </div>
         <div>
-            <h3>Core Tech Stack</h3>
+          <h3>Currently Learning</h3>
+        <p>
+          I’m currently studying for the <strong>AWS Certified Cloud Practitioner (CLF-C02)</strong> certification.  
+          My goal is to deepen my understanding of cloud computing fundamentals, AWS services, and deployment workflows  
+          to better integrate scalable and reliable cloud solutions into projects and applications of any kind.
+        </p>
+        </div>
+        <div>
+            <h4>Core Tech Stack</h4>
             <ul>
                 <li v-for="tech in workTech"> {{ tech }}</li>
             </ul>
         </div>
           <div>
-          <h3>Tools</h3>
+          <h4>Tools</h4>
           <ul>
             <li v-for="tool in tools">{{ tool }}</li>
           </ul>
         </div>
         <div>
-            <h3>Explored / Learning</h3>
+            <h4>Explored / Learning</h4>
             <ul>
                 <li v-for="tech in famTech"> {{ tech }}</li>
             </ul>
@@ -110,6 +118,12 @@ h2 {
 
 h3 {
   font-size: clamp(1.2rem, 1rem + 0.6vw, 1.5rem);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+h4 {
+  font-size: clamp(1rem, 1rem + 0.4vw, 1.2rem);
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   line-height: 1.2;
@@ -214,11 +228,41 @@ li:hover {
     grid-template-rows: auto auto;
   }
 
-  .section > :nth-child(1) { grid-column: 1 / 2; }
-  .section > :nth-child(2) { grid-column: 2 / 4; }
-  .section > :nth-child(3) { grid-column: 1 / 2; grid-row: 2; }
-  .section > :nth-child(4) { grid-column: 2 / 3; grid-row: 2; }
-  .section > :nth-child(5) { grid-column: 3 / 4; grid-row: 2; }
+  /* Avatar */
+  .section > :nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  /* About text */
+  .section > :nth-child(2) {
+    grid-column: 2 / 4;
+    grid-row: 1;
+  }
+
+  /* NEW: Currently Learning */
+  .section > :nth-child(3) {
+    grid-column: 1 / 4;
+    grid-row: 2;
+  }
+
+  /* Core Tech Stack */
+  .section > :nth-child(4) {
+    grid-column: 1 / 2;
+    grid-row: 3;
+  }
+
+  /* Tools */
+  .section > :nth-child(5) {
+    grid-column: 2 / 3;
+    grid-row: 3;
+  }
+
+  /* Explored / Learning */
+  .section > :nth-child(6) {
+    grid-column: 3 / 4;
+    grid-row: 3;
+  }
 }
 
 @media (min-width: 1921px) {
