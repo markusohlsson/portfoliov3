@@ -14,7 +14,7 @@ import Privacy from './components/Privacy.vue';
 const showIntro = ref(true);
 const router = useRouter();
 const route = useRoute();
-
+console.log(window.innerWidth);
 function handleIntroFinished() {
   showIntro.value = false;
 }
@@ -123,7 +123,6 @@ onBeforeUnmount(() => {
   flex-direction: column;
   width: 100%;
   max-width: 95vw;
-  box-sizing: border-box;
   padding: 1rem;
   margin: 0 auto;
   height: auto;
@@ -161,7 +160,6 @@ onBeforeUnmount(() => {
 
 .sections-wrapper > * {
   padding: 1em;
-  box-sizing: content-box;
   border-radius: 0.5em;
 }
 
@@ -203,7 +201,6 @@ onBeforeUnmount(() => {
     min-height: 100%;
     max-height: 100%;
     padding: 3em;
-    box-sizing: border-box;
   }
 }
 @media (min-width: 1921px) {

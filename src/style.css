@@ -8,6 +8,12 @@ html, body {
   color: var(--text-color);
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 ::selection {
   color: var(--text-color); /* text color when highlighted */
   background: rgba(0, 0, 0, 0.1);
@@ -54,7 +60,6 @@ body {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);       /* the blur behind the element */
   -webkit-backdrop-filter: blur(15px); /* Safari support */
-  padding: 3em;
 }
 
 .title-heading {

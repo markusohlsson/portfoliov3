@@ -134,7 +134,7 @@ watch(() => route.params.id, (newId) => {
 <style scoped>
 /* --- Base: Mobile first --- */
 h2 {
-  font-size: 1.7rem;
+  font-size: clamp(1rem, 1rem + 1vw, 2.2rem);
   margin-top: 0;
   margin-bottom: 0.5rem;
   line-height: 1.2;
@@ -196,7 +196,6 @@ h2 {
 /* --- Larger screens --- */
 @media (min-width: 1100px) {
   h2 {
-    font-size: 2.2rem;
     text-align: left;
   }
 

@@ -62,12 +62,12 @@ const tools = [
 <template>
     <div class="section" :id="id">
         <div class="avatar-section">
-        <div class="avatar-wrapper">
-            <img class="avatar-image" src="../assets/main.webp" alt="Image of me" loading="lazy">
-            <div class="avatar-text">
-            <span ref="typedElement" class="typed"></span>
-            </div>
-        </div>
+          <div class="avatar-wrapper">
+              <img class="avatar-image" src="../assets/main.webp" alt="Image of me" loading="lazy">
+              <div class="avatar-text">
+              <span ref="typedElement" class="typed"></span>
+              </div>
+          </div>
         </div>
         <div>
             <h1 class="title-heading" data-backdrop-text="About Me">About Me</h1>
@@ -148,7 +148,7 @@ li {
   border-radius: 2em;
   margin: 0 clamp(4px, 2px + 0.5vw, 7px) clamp(7px, 4px + 0.5vw, 10px) 0;
   padding: clamp(0.25em, 0.2em + 0.3vw, 0.5em) clamp(0.5em, 0.3em + 0.5vw, 1em);
-  font-size: clamp(0.8rem, 0.7rem + 0.4vw, 1rem);
+  font-size: clamp(0.8rem, 0.7rem + 0.2vw, 1rem);
   transition: transform linear 0.1s;
   position: relative;
 }

@@ -72,7 +72,6 @@ const srcset = `
 .project-card {
   position: relative;
   overflow: hidden;
-  box-sizing: border-box;
   min-height: auto;
   border-radius: 0.5em;
 }

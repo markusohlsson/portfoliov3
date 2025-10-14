@@ -120,7 +120,6 @@ li {
   flex: 0 0 100%;
   height: 100%;
   scroll-snap-align: start;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;

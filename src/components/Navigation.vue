@@ -70,7 +70,6 @@ nav {
   -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 8px 26px 0 rgba(22, 24, 26, 0.07);
   border-radius: 0.5em;
-  box-sizing: border-box;
   display: flex;
   flex-direction: row; /* horizontal menu on mobile */
   justify-content: space-between;

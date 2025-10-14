@@ -9,9 +9,14 @@
         </div>
         <div class="resume-col">
             <h2 v-if="isMobile">Experience</h2>
-            <template v-for="experience in experiences">
-                <ResumeCard :details="experience" />    
-            </template>
+            <ResumeCard
+              v-for="(experience, index) in experiences"
+              :key="index"
+              :details="experience"
+              :expandedIndex="expandedIndex"
+              :currentIndex="index"
+              @toggle="handleToggle(index)"
+            />
         </div>
     </div>
     </div>
@@ -32,7 +37,7 @@
 }
 
 h2 {
-  font-size: 1.4rem; /* mobile default */
+  font-size: clamp(1rem, 1rem + 1vw, 2.2rem);
   margin-top: 0;
   margin-bottom: 0.5rem;
   line-height: 1.2;
@@ -40,9 +45,6 @@ h2 {
 
 /* --- Larger screens --- */
 @media (min-width: 1100px) {
-  h2 {
-    font-size: 2.2rem;
-  }
 
   .resume-grid {
     grid-template-columns: 1fr 1fr; /* 50/50 split on desktop */
@@ -93,6 +95,11 @@ const experiences = [
     }
 ]
 const isMobile = ref(false);
+const expandedIndex = ref(null);
+
+function handleToggle(index) {
+  expandedIndex.value = expandedIndex.value === index ? null : index;
+}
 onMounted(() => {
   isMobile.value = window.innerWidth < 768; // or use a resize listener
 });

@@ -16,7 +16,6 @@
 .resume-card {
   position: relative;
   padding-left: 20px;
-  box-sizing: border-box;
 }
 
 .resume-card::before {
@@ -28,7 +27,7 @@
   border-left: 1px dashed rgba(0, 0, 0, 0.2);
 }
 .resume-description {
-    font-size: clamp(0.80rem, 0.7rem + 0.3vw, 0.9rem);
+    font-size: clamp(0.7rem, 0.6rem + 1vw, 0.8rem);
     margin: 0;
     margin-top: 0.5rem;
     line-height: 1.25;

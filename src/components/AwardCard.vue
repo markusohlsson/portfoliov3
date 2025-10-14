@@ -16,7 +16,6 @@
   position: relative;
   padding-left: 20px;
   padding-bottom: 30px;
-  box-sizing: border-box;
 }
 
 .award-card::before {
