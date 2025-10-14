@@ -14,7 +14,7 @@ import Privacy from './components/Privacy.vue';
 const showIntro = ref(true);
 const router = useRouter();
 const route = useRoute();
-console.log(window.innerWidth);
+
 function handleIntroFinished() {
   showIntro.value = false;
 }

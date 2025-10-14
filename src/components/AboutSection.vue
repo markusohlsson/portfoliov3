@@ -218,10 +218,6 @@ li:hover {
 
 /* --- Larger screens --- */
 @media (min-width: 1100px) {
-  h2 {
-    margin-top: 1.5rem;
-  }
-
   .section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

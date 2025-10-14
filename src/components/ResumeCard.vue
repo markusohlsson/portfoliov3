@@ -101,17 +101,24 @@
 
 /* --- Larger screens --- */
 @media (min-width: 1100px) {
-  .resume-level {
-    font-size: 1.25rem;
-  }
-
 
   .resume-icon svg {
     height: 30px;
     width: 30px;
     padding-bottom: 0.5rem;
   }
-
+}
+@media (min-width: 1921px) {
+  .resume-description {
+    font-size: clamp(0.75rem, 0.6rem + 1vw, 1rem);
+  }
+    .resume-date {
+    padding: 0.5em 1em;
+    font-size: 1rem;
+  }
+    .resume-level {
+    font-size: 1.25rem;
+  }
 }
 </style>
 
