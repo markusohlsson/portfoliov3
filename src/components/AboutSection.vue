@@ -80,14 +80,6 @@ const tools = [
             </ul>
         </div>
         <div>
-          <h3>Currently Learning</h3>
-        <p>
-          I’m currently studying for the <strong>AWS Certified Cloud Practitioner (CLF-C02)</strong> certification.  
-          My goal is to deepen my understanding of cloud computing fundamentals, AWS services, and deployment workflows  
-          to better integrate scalable and reliable cloud solutions into projects and applications of any kind.
-        </p>
-        </div>
-        <div>
             <h4>Core Tech Stack</h4>
             <ul>
                 <li v-for="tech in workTech"> {{ tech }}</li>
